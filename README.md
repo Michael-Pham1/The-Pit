@@ -1,8 +1,10 @@
 # CS110_Final_Project
 
 # Contributors
-
-- Alec Overman Michael, Thomas, Sharan
+- Thomas Merritt
+- Alec Overman 
+- Michael Pham Thomas
+- Sharan Singh
 
 ## Purpose
 
