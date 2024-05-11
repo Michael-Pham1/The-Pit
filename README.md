@@ -1,6 +1,6 @@
 # CS110_Final_Project
 
-# Contributors:
+# Contributors
 
 - Alec Overman Michael, Thomas, Sharan
 
