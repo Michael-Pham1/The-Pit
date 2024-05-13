@@ -7,12 +7,12 @@ import Profile from './Pages/Profile';
 
 function App() {
   return (
-  //NAV BAR
+    //NAV BAR
     <Router>
       <div>
         <NavBar />
         <Routes>
-          <Route path="/"  />
+          <Route path="/" element={<Home />} />
           <Route path="/services" element={<Catalog />} />
           <Route path="/contact" element={<Profile />} />
         </Routes>
