@@ -1,7 +1,8 @@
-import React from 'react';
+import React from "react";
+import ProfileInfo from "../Components/ProfileInfo";
 
-function Home() {
-  return <h1>Profile Page</h1>;
+function Profile() {
+  return <ProfileInfo />;
 }
 
-export default Home;
+export default Profile;
