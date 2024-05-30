@@ -39,6 +39,8 @@ function ProfileInfo(profile) {
           Nam finibus rutrum eros nec dictum. Sed id sodales ex, vel volutpat arcu.
         </p>
       </div>
+      
+     
     </div>
   );
 }

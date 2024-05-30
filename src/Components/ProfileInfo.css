@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   gap: 30px;
-  padding: 2.5%;
 }
 #user-details {
   display: flex;
