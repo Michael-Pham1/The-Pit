@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React from 'react';
 import exampleImage from '../Images/Header.jpeg';
 import '../Home.css'; // Import CSS file
 
+
 function Home() {
+<<<<<<< HEAD
   const [matchups, setMatchups] = useState([]);
   const [anime1, setAnime1] = useState('');
   const [anime2, setAnime2] = useState('');
@@ -64,20 +65,23 @@ function Home() {
     }
   };
 
+=======
+>>>>>>> parent of c2b3608 (Setup MongoDb for project)
   return (
     <div className='homepage'>
       <header>
         <img src={exampleImage} alt="Header" className="header-image" />
-        <div className="overlay"></div>
+        <div class="overlay"></div>
       </header>
-      <div id='home-body'>
+      <body id='home-body'>
         <div id='search-create-container'>
           <button>Create Match</button>
-          <input type="text" id="searchBar" placeholder="Search Active Matches..." />
+          <input type="text" id="searchBar" placeholder="Search Active Matches..."></input>
         </div>
         <div id='dedicated-matches-container'>
-          <hr className="bold-line" />
+          <hr class="bold-line"></hr>
           <h1 id="dedicated-matches">DEDICATED MATCHES</h1>
+<<<<<<< HEAD
           <hr className="bold-line" />
           <div className="matchups-container">
             {matchups.length > 0 ? (
@@ -132,6 +136,13 @@ function Home() {
         </form>
       </div>
     </div>
+=======
+          <hr class="bold-line"></hr>
+        </div>
+      </body>
+    </div >
+
+>>>>>>> parent of c2b3608 (Setup MongoDb for project)
   );
 }
 
