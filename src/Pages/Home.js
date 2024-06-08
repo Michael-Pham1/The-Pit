@@ -5,6 +5,7 @@ import '../Home.css'; // Import CSS file
 
 function Home() {
 <<<<<<< HEAD
+<<<<<<< HEAD
   const [matchups, setMatchups] = useState([]);
   const [anime1, setAnime1] = useState('');
   const [anime2, setAnime2] = useState('');
@@ -67,6 +68,8 @@ function Home() {
 
 =======
 >>>>>>> parent of c2b3608 (Setup MongoDb for project)
+=======
+>>>>>>> parent of c2b3608 (Setup MongoDb for project)
   return (
     <div className='homepage'>
       <header>
@@ -81,6 +84,7 @@ function Home() {
         <div id='dedicated-matches-container'>
           <hr class="bold-line"></hr>
           <h1 id="dedicated-matches">DEDICATED MATCHES</h1>
+<<<<<<< HEAD
 <<<<<<< HEAD
           <hr className="bold-line" />
           <div className="matchups-container">
@@ -136,6 +140,13 @@ function Home() {
         </form>
       </div>
     </div>
+=======
+          <hr class="bold-line"></hr>
+        </div>
+      </body>
+    </div >
+
+>>>>>>> parent of c2b3608 (Setup MongoDb for project)
 =======
           <hr class="bold-line"></hr>
         </div>
