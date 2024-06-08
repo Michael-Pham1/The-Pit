@@ -1,17 +1,13 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import exampleImage from '../Images/Header.jpeg';
 import '../Home.css'; // Import CSS file
 
-
 function Home() {
-<<<<<<< HEAD
-<<<<<<< HEAD
   const [matchups, setMatchups] = useState([]);
   const [anime1, setAnime1] = useState('');
   const [anime2, setAnime2] = useState('');
   const [result, setResult] = useState('');
-  const [image1, setImage1] = useState(null);
-  const [image2, setImage2] = useState(null);
 
   useEffect(() => {
     const fetchMatchups = async () => {
@@ -25,76 +21,42 @@ function Home() {
     fetchMatchups();
   }, []);
 
-  const handleImageUpload = async (image) => {
-    const formData = new FormData();
-    formData.append('image', image);
-    try {
-      const response = await axios.post('http://localhost:5000/api/upload', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-      return response.data.imageUrl;
-    } catch (err) {
-      console.error(err);
-      return null;
-    }
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const imageUrl1 = await handleImageUpload(image1);
-    const imageUrl2 = await handleImageUpload(image2);
-    if (imageUrl1 && imageUrl2) {
-      try {
-        const response = await axios.post('http://localhost:5000/api/matchups', {
-          anime1,
-          anime2,
-          result,
-          image1: imageUrl1,
-          image2: imageUrl2
-        });
-        setMatchups([...matchups, response.data]);
-        setAnime1('');
-        setAnime2('');
-        setResult('');
-        setImage1(null);
-        setImage2(null);
-      } catch (err) {
-        console.error(err);
-      }
+    try {
+      const response = await axios.post('http://localhost:5000/api/matchups', {
+        anime1,
+        anime2,
+        result
+      });
+      setMatchups([...matchups, response.data]);
+      setAnime1('');
+      setAnime2('');
+      setResult('');
+    } catch (err) {
+      console.error(err);
     }
   };
 
-=======
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
-=======
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
   return (
     <div className='homepage'>
       <header>
         <img src={exampleImage} alt="Header" className="header-image" />
-        <div class="overlay"></div>
+        <div className="overlay"></div>
       </header>
-      <body id='home-body'>
+      <div id='home-body'>
         <div id='search-create-container'>
           <button>Create Match</button>
-          <input type="text" id="searchBar" placeholder="Search Active Matches..."></input>
+          <input type="text" id="searchBar" placeholder="Search Active Matches..." />
         </div>
         <div id='dedicated-matches-container'>
-          <hr class="bold-line"></hr>
-          <h1 id="dedicated-matches">DEDICATED MATCHES</h1>
-<<<<<<< HEAD
-<<<<<<< HEAD
           <hr className="bold-line" />
-          <div className="matchups-container">
+          <h1 id="dedicated-matches">DEDICATED MATCHES</h1>
+          <hr className="bold-line" />
+          <div>
             {matchups.length > 0 ? (
               matchups.map(matchup => (
                 <div key={matchup._id} className="matchup">
-                  <div className="image-container">
-                    <img src={matchup.image1} alt={matchup.anime1} />
-                    <img src={matchup.image2} alt={matchup.anime2} />
-                  </div>
                   <p>{matchup.anime1} vs {matchup.anime2}</p>
                   <p>Result: {matchup.result}</p>
                 </div>
@@ -126,34 +88,10 @@ function Home() {
             placeholder="Result"
             required
           />
-          <input
-            type="file"
-            onChange={(e) => setImage1(e.target.files[0])}
-            required
-          />
-          <input
-            type="file"
-            onChange={(e) => setImage2(e.target.files[0])}
-            required
-          />
           <button type="submit">Add Matchup</button>
         </form>
       </div>
     </div>
-=======
-          <hr class="bold-line"></hr>
-        </div>
-      </body>
-    </div >
-
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
-=======
-          <hr class="bold-line"></hr>
-        </div>
-      </body>
-    </div >
-
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
   );
 }
 

@@ -6,26 +6,17 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
-<<<<<<< HEAD
     "axios": "^1.7.2",
-    "cors": "^2.8.5",
-    "mongod": "^2.0.0",
-    "mongodb": "^6.7.0",
-=======
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
-=======
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-hook": "^0.0.1",
     "react-hook-form": "^7.51.4",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "^5.0.1",
+    "react-scripts": "^3.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -47,14 +38,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-<<<<<<< HEAD
-<<<<<<< HEAD
-  },
-  "proxy": "http://localhost:5000/"
-=======
   }
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
-=======
-  }
->>>>>>> parent of c2b3608 (Setup MongoDb for project)
 }
