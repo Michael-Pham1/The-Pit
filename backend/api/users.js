@@ -8,7 +8,7 @@ router.post('/', async (req, res) => {
     try{
         const newUser = new User({ username, email, password});
         await newUser.save()
-        res.json(newuser);
+        res.json(newUser);
     } catch (err) {
         res.status(500).send('server error!');
     }
