@@ -1,3 +1,4 @@
+
 .matchup {
   display: flex;
   width: 15rem;
@@ -89,8 +90,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
 }
+
+
 
 /* .text-1, .text-2 {
     margin-left: 3px;
