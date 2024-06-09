@@ -1,4 +1,3 @@
-// backend/models/Matchup.js
 const mongoose = require('mongoose');
 const MatchupSchema = new mongoose.Schema({
   anime1: { type: String, required: true },

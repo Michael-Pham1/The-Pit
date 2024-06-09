@@ -1,4 +1,3 @@
-// backend/routes/matchups.js
 const express = require('express');
 const router = express.Router();
 const Matchup = require('../models/Matchup');
@@ -11,7 +10,7 @@ router.post('/', async (req, res) => {
     await newMatchup.save();
     res.json(newMatchup);
   } catch (err) {
-    console.error(err); // Log the error for debugging
+    console.error(err);
     res.status(500).send('Server error!');
   }
 });
@@ -22,7 +21,7 @@ router.get('/', async (req, res) => {
     const matchups = await Matchup.find();
     res.json(matchups);
   } catch (err) {
-    console.error(err); // Log the error for debugging
+    console.error(err);
     res.status(500).send('Server error');
   }
 });
