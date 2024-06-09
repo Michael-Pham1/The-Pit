@@ -57,8 +57,7 @@ header {
 
 
 .bold-line {
-    border: none;
-    height: 5%;
+    padding: 5px;
     /* Adjust the thickness here */
     background-color: black;
     /* Adjust the color here */
@@ -73,8 +72,55 @@ header {
 }
 
 #dedicated-matches-container {
-    height: 10%;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 3px;  
+  }
+  
+  
+  #dedicated-matches-list {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .prev-button {
+    display: inline-block;
+    margin-right: 8px;
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    padding: 10px;
+    margin-left: 20px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .next-button {
+    display: inline-block;
+    margin-right: 8px;
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    padding: 10px;
+    margin-right: 20px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(-45deg);
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .prev-button:hover {
+    cursor: pointer;
+    background-color: black;
+  }
+
+  .next-button:hover {
+    cursor: pointer;
+    background-color: black;
+  }
 
 .overlay {
     position: absolute;
