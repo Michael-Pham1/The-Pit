@@ -1,9 +1,9 @@
-import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import NavBar from './Components/NavBar';
-import Home from './Pages/Home';
-import Catalog from './Pages/Catalog';
-import Profile from './Pages/Profile';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from "./Components/NavBar";
+import Home from "./Pages/Home";
+import Catalog from "./Pages/Catalog";
+import Profile from "./Pages/Profile";
 
 function App() {
   return (
@@ -13,8 +13,8 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/services" element={<Catalog />} />
-          <Route path="/contact" element={<Profile />} />
+          <Route path="/catalog" element={<Catalog />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </div>
     </Router>

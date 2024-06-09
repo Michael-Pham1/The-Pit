@@ -1,0 +1,37 @@
+#profile-info {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+#user-details {
+  display: flex;
+  flex-direction: horizontal;
+  gap: 30px;
+}
+
+#user-info {
+  display: flex;
+  flex: 1;
+  padding: 10px;
+  gap: 15px;
+  border-style: solid;
+}
+
+#user-info img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; 
+  object-position: center; 
+}
+
+
+#stats {
+  flex: 4;
+  padding: 10px;
+  border-style: solid;
+}
+
+#bio {
+  padding: 10px;
+  border-style: solid;
+}
