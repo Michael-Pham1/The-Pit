@@ -3,7 +3,7 @@ const router = express.Router();
 const Matchup = require('../models/Matchup');
 
 // Create a new matchup
-router.post('/', async (req, res) => {
+router.post('/home', async (req, res) => {
   const { anime1, anime2, result } = req.body;
   try {
     const newMatchup = new Matchup({ anime1, anime2, result });
@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
 });
 
 // Get all matchups
-router.get('/', async (req, res) => {
+router.get('/home', async (req, res) => {
   try {
     const matchups = await Matchup.find();
     res.json(matchups);

@@ -26,6 +26,7 @@ app.get("/", (req, res) => {
 app.use("/api/users", require("./users"));
 app.use("/api/animes", require("./animes"));
 app.use("/api/matchups", require("./matchups"));
+app.use("/api/register", require("./routes/register"));
 
 app.get("/api/test-db", async (req, res) => {
   try {
