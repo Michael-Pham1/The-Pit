@@ -15,7 +15,7 @@
     "react-hook": "^0.0.1",
     "react-hook-form": "^7.51.4",
     "react-router-dom": "^6.23.1",
-    "react-scripts": "^3.0.1",
+    "react-scripts": "^5.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -41,8 +41,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "webpack": "^5.91.0"
   }
 }

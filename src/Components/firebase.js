@@ -90,7 +90,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         const user = response.user;
         const profilePic = "None"
         await registerUserToMongo(
-            user.displayName,
+            user.displayName = name,
             user.email,
             user.uid,
             profilePic

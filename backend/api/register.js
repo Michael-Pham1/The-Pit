@@ -17,6 +17,7 @@ router.post('/', async (req, res) => {
                 uid,
                 displayPicture
             });
+            console.log("new user looks like this: ", newUser);
             const registerUser = await newUser.save();
             res.json(registerUser);
 
@@ -25,9 +26,11 @@ router.post('/', async (req, res) => {
 
 
     } catch (error) {
-        console.log("error occurred:  ${error.message}");
+        console.log("error occurred:", error.message);
     }
 });
+
+module.exports = router;
 
 // router.get('/users/:uid', async (req, res) => {
 //     try {
