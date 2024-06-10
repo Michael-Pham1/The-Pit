@@ -14,7 +14,7 @@
 //   useEffect(() => {
 //     const fetchMatchups = async () => {
 //       try {
-//         const response = await axios.get('http://localhost:5001/api/matchups');
+//         const response = await axios.get('http://localhost:5000/api/matchups');
 //         setMatchups(response.data);
 //       } catch (err) {
 //         console.error(err);
@@ -26,7 +26,7 @@
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       const response = await axios.post('http://localhost:5001/api/matchups', {
+//       const response = await axios.post('http://localhost:5000/api/matchups', {
 //         anime1,
 //         anime2,
 //         result
