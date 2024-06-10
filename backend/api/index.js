@@ -36,6 +36,11 @@ app.use(
     origin: "https://the-pit-sepia.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type"],
+    credentials: true,
+    accessControlAllowOrigin: true,
+    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
+    accessControlAllowHeaders: ["Content-Type", "Authorization"],
   }),
   require("./register")
 );
@@ -45,6 +50,11 @@ app.use(
     origin: "https://the-pit-sepia.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type"],
+    credentials: true,
+    accessControlAllowOrigin: true,
+    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
+    accessControlAllowHeaders: ["Content-Type", "Authorization"],
   }),
   require("./matchups")
 );
@@ -54,6 +64,11 @@ app.use(
     origin: "https://the-pit-sepia.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type"],
+    credentials: true,
+    accessControlAllowOrigin: true,
+    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
+    accessControlAllowHeaders: ["Content-Type", "Authorization"],
   }),
   require("./messages")
 );
@@ -64,6 +79,11 @@ app.use(
     origin: "https://the-pit-sepia.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type"],
+    credentials: true,
+    accessControlAllowOrigin: true,
+    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
+    accessControlAllowHeaders: ["Content-Type", "Authorization"],
   }),
   require("./users")
 );
@@ -74,6 +94,11 @@ app.use(
     origin: "https://the-pit-sepia.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    exposedHeaders: ["Content-Type"],
+    credentials: true,
+    accessControlAllowOrigin: true,
+    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
+    accessControlAllowHeaders: ["Content-Type", "Authorization"],
   }),
   require("./animes")
 );
