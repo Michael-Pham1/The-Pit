@@ -5,7 +5,7 @@ const User = require('../models/User');
 router.post('/', async (req, res) => {
     console.log("Made it to the post");
     try {
-        const { name, email, uid, displayPicture } = req.body;
+        const { name, email, uid, displayPicture, bio, created, win, lose } = req.body;
 
         const userFound = await User.findOne({ uid });
         if (userFound) {
@@ -15,7 +15,11 @@ router.post('/', async (req, res) => {
                 name,
                 email,
                 uid,
-                displayPicture
+                displayPicture,
+                bio,
+                created,
+                win,
+                lose
             });
             console.log("new user looks like this: ", newUser);
             const registerUser = await newUser.save();
@@ -30,17 +34,21 @@ router.post('/', async (req, res) => {
     }
 });
 
+
+router.get('/:uid', async (req, res) => {
+    try {
+        const { uid } = req.params;
+        const user = await User.findOne({ uid });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        res.json(user);
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
 module.exports = router;
-
-// router.get('/users/:uid', async (req, res) => {
-//     try {
-//         const { uid } = req.params;
-//         const user = await User.findOne({ uid });
-//         if (user) {
-//             res.status(200).json({ displayPictere: user.displayPicture, name: user.name });
-//         }
-//     } catch (error) {
-//         console.log(error.message);
-//     }
-
-// });

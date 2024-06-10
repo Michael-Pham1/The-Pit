@@ -4,14 +4,14 @@ const Matchup = require('../models/Matchup');
 
 // Create a new matchup
 router.post('/', async (req, res) => {
-  const { anime1, anime2, result } = req.body;
+  const { character1, character2, imageCharacter1, imageCharacter2, vote1, vote2, result, createrId, createDate } = req.body;
   try {
-    const newMatchup = new Matchup({ anime1, anime2, result });
+    const newMatchup = new Matchup({ character1, character2, imageCharacter1, imageCharacter2, vote1, vote2, result, createrId, createDate});
     await newMatchup.save();
     res.json(newMatchup);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server error!');
+    res.status(500).send("Matchups POST error!");
   }
 });
 
@@ -22,7 +22,29 @@ router.get('/', async (req, res) => {
     res.json(matchups);
   } catch (err) {
     console.error(err);
-    res.status(500).send('Server error');
+    res.status(500).send("Matchups GET all error");
+  }
+});
+
+//Get matchup by matchup id
+router.get('/:id', async (req, res) => {
+  try {
+    const matchup = await Matchup.findById(req.params.id);
+    res.json(matchup);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Matchups GET matchup:id error');
+  }
+});
+
+//Get matchup by user id
+router.get('/user/:id', async (req, res) => {
+  try {
+    const matchups = await Matchup.find({ createrId: req.params.id });
+    res.json(matchups);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Matchups GET user/:id error');
   }
 });
 
