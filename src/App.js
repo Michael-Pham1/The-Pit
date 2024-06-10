@@ -11,9 +11,10 @@ import Reset from "./Components/Reset";
 
 function App() {
   return (
-    //NAV BAR
+    //NAV BAR   
     <Router>
       <div>
+        <NavBar />
         <Routes>
           <Route path="/" Component={Login} />
           <Route path="/register" Component={Register} />
@@ -22,7 +23,6 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
-        <NavBar />
       </div>
     </Router>
 
