@@ -1,3 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
 .homepage {
     position: absolute;
     top: 0;
@@ -5,6 +13,7 @@
     width: 100%;
     /* You can add other styling as needed */
 }
+
 
 #home-body {
     margin: 0;
@@ -23,6 +32,19 @@ header {
     top: 0px;
     z-index: 0;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-title {
+    position: absolute;
+    top: 30%;
+    font-size: 4vw; 
+    z-index: 1;
+    color: white;
+    text-align: center;
+    width: 100%;
 }
 
 .header-image {
@@ -33,6 +55,10 @@ header {
     top: 0px;
     z-index: 0; */
 }
+
+
+
+
 
 #search-create-container {
     height: 1.7%;
