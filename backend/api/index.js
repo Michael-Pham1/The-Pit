@@ -10,6 +10,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: "https://the-pit-sepia.vercel.app", // Replace with your frontend URL
+    credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods if necessary
     allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers if necessary
   })
@@ -29,11 +30,52 @@ app.get("/", (req, res) => {
 });
 
 // Use Routes
-app.use("/api/users", require("./users"));
-app.use("/api/animes", require("./animes"));
-app.use("/api/matchups", require("./matchups"));
-app.use("/api/register", require("./register"));
-app.use("/api/messages", require("./messages"));
+app.use(
+  "/api/register",
+  cors({
+    origin: "https://the-pit-sepia.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+  require("./register")
+);
+app.use(
+  "/api/matchups",
+  cors({
+    origin: "https://the-pit-sepia.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+  require("./matchups")
+);
+app.use(
+  "/api/messages",
+  cors({
+    origin: "https://the-pit-sepia.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+  require("./messages")
+);
 
+app.use(
+  "/api/users",
+  cors({
+    origin: "https://the-pit-sepia.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+  require("./users")
+);
+
+app.use(
+  "/api/animes",
+  cors({
+    origin: "https://the-pit-sepia.vercel.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+  require("./animes")
+);
 // Export the app for Vercel
 module.exports = app;
