@@ -33,7 +33,7 @@ app.get("/", (req, res) => {
 app.use(
   "/api/register",
   cors({
-    origin: "https://the-pit-sepia.vercel.app",
+    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Content-Type"],
@@ -47,7 +47,8 @@ app.use(
 app.use(
   "/api/matchups",
   cors({
-    origin: "https://the-pit-sepia.vercel.app",
+    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
+
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Content-Type"],
@@ -61,7 +62,8 @@ app.use(
 app.use(
   "/api/messages",
   cors({
-    origin: "https://the-pit-sepia.vercel.app",
+    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
+
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Content-Type"],
@@ -76,7 +78,8 @@ app.use(
 app.use(
   "/api/users",
   cors({
-    origin: "https://the-pit-sepia.vercel.app",
+    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
+
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Content-Type"],
@@ -91,7 +94,8 @@ app.use(
 app.use(
   "/api/animes",
   cors({
-    origin: "https://the-pit-sepia.vercel.app",
+    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
+
     methods: ["GET", "POST", "PUT", "DELETE"],
     allowedHeaders: ["Content-Type", "Authorization"],
     exposedHeaders: ["Content-Type"],
