@@ -14,6 +14,7 @@ function App() {
     //NAV BAR
     <Router>
       <div>
+        <NavBar />
         <Routes>
           <Route path="/" Component={Login} />
           <Route path="/register" Component={Register} />
@@ -22,7 +23,6 @@ function App() {
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/profile" element={<Profile />} />
         </Routes>
-        <NavBar />
       </div>
     </Router>
 

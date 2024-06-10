@@ -23,22 +23,13 @@ app.get("/", (req, res) => {
 });
 
 // Use Routes
-app.use("/api/users", require("./users"));
-app.use("/api/animes", require("./animes"));
-app.use("/api/matchups", require("./matchups"));
-app.use("/api/register", require("./routes/register"));
 
-app.get("/api/test-db", async (req, res) => {
-  try {
-    const Test = mongoose.model("Test", new mongoose.Schema({ name: String }));
-    const testData = new Test({ name: "Test Entry" });
-    await testData.save();
-    res.json({ message: "Data saved successfully", data: testData });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ message: "Error saving data" });
-  }
-});
+app.use('/api/users', require('./users'));
+app.use('/api/anime', require('./animes'));
+app.use('/api/matchups', require('./matchups'));
+app.use('/api/register', require('./register'));
 
+const PORT = process.env.PORT || 3100;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // Export the app for Vercel
 module.exports = app;
