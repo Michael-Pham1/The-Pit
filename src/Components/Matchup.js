@@ -16,7 +16,7 @@ function Matchup({ anime1Image, anime2Image, anime1Name, anime2Name, result }) {
             <div className="character-name">{anime2Name}</div>
           </div>
           <div className="vs">
-            <img src={vs} alt="VS" /> {/* Update with your VS image path */}
+            <img src={vs} alt="VS" />
           </div>
           
         </div>
