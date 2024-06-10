@@ -12,7 +12,7 @@ router.post('/', async (req, res) => {
             return res.status(422).json({ error: 'User already exists!' });
         } else {
             const newUser = new User({
-                username: name,
+                name,
                 email,
                 uid,
                 displayPicture,
