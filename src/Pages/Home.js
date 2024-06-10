@@ -14,7 +14,7 @@
 //   useEffect(() => {
 //     const fetchMatchups = async () => {
 //       try {
-//         const response = await axios.get('http://localhost:5001/api/matchups');
+//         const response = await axios.get('http://localhost:5000/api/matchups');
 //         setMatchups(response.data);
 //       } catch (err) {
 //         console.error(err);
@@ -26,7 +26,7 @@
 //   const handleSubmit = async (e) => {
 //     e.preventDefault();
 //     try {
-//       const response = await axios.post('http://localhost:5001/api/matchups', {
+//       const response = await axios.post('http://localhost:5000/api/matchups', {
 //         anime1,
 //         anime2,
 //         result
@@ -130,7 +130,7 @@ function Home() {
   const [anime2, setAnime2] = useState('');
   const [result, setResult] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [matchesPerPage] = useState(6);
+  const [matchesPerPage] = useState(5);
 
   useEffect(() => {
     const fetchMatchups = async () => {
@@ -161,6 +161,10 @@ function Home() {
     }
   };
 
+  const clearMatchups = async () => {
+    setMatchups([]);
+  };
+
   const indexOfLastMatch = currentPage * matchesPerPage;
   const indexOfFirstMatch = indexOfLastMatch - matchesPerPage;
   const currentMatches = matchups.slice(indexOfFirstMatch, indexOfLastMatch);
@@ -170,9 +174,10 @@ function Home() {
 
   return (
     <div className='homepage'>
-      <header>
+      <header className="header">
         <img src={exampleImage} alt="Header" className="header-image" />
         <div className="overlay"></div>
+        <div className="header-title">The Pit</div>
       </header>
       <div id='home-body'>
         <div id='search-create-container'>
@@ -181,6 +186,29 @@ function Home() {
         </div>
         <DedicatedMatches currentMatches={currentMatches} nextPage={nextPage} prevPage={prevPage} />
         <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              value={anime1}
+              onChange={(e) => setAnime1(e.target.value)}
+              placeholder="Anime 1"
+              required
+            />
+            <input
+              type="text"
+              value={anime2}
+              onChange={(e) => setAnime2(e.target.value)}
+              placeholder="Anime 2"
+              required
+            />
+            <input
+              type="text"
+              value={result}
+              onChange={(e) => setResult(e.target.value)}
+              placeholder="Result"
+              required
+            />
+          <button type="submit">Add Matchup</button>
+          <button onClick={clearMatchups}>Clear All</button>
         </form>
       </div>
     </div>
