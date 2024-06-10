@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./NavBar.css";
-import LogOutNav from "./LogOutNav";
+import LogOutNav from "./logOut";
 
 const NavBar = () => {
   return (
@@ -16,7 +16,10 @@ const NavBar = () => {
         <li>
           <Link to="/profile">Profile</Link>
         </li>
-        <LogOutNav />
+        <li>
+          <LogOutNav />
+        </li>
+
       </ul>
     </nav>
 

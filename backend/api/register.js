@@ -5,7 +5,7 @@ const User = require('../models/User');
 router.post('/', async (req, res) => {
     console.log("Made it to the post");
     try {
-        const { name, email, uid, displayPicture } = req.body;
+        const { name, email, uid, displayPicture, bio, created, win, lose } = req.body;
 
         const userFound = await User.findOne({ uid });
         if (userFound) {
@@ -15,7 +15,11 @@ router.post('/', async (req, res) => {
                 name,
                 email,
                 uid,
-                displayPicture
+                displayPicture,
+                bio,
+                created,
+                win,
+                lose
             });
             console.log("new user looks like this: ", newUser);
             const registerUser = await newUser.save();

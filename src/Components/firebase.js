@@ -18,7 +18,6 @@ import {
     collection,
     where
 } from 'firebase/firestore';
-import { Navigate } from 'react-router-dom';
 
 
 const firebaseConfig = {
@@ -38,7 +37,7 @@ const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
 
-const registerUserToMongo = async (name, email, uid, displayPicture) => {
+const registerUserToMongo = async (name, email, uid, displayPicture, bio, created, win, lose) => {
 
     try {
         // console.log(name, email, uid, displayPicture);
@@ -47,7 +46,11 @@ const registerUserToMongo = async (name, email, uid, displayPicture) => {
             name,
             email,
             uid,
-            displayPicture
+            displayPicture,
+            bio,
+            created,
+            win,
+            lose
         });
         console.log("Registered user successfully");
     } catch (err) {
@@ -62,11 +65,19 @@ const signInWithGoogle = async () => {
         const user = response.user;
         const q = query(collection(db, "users"), where("uid", "==", user.uid));
         const docs = await getDocs(q);
+        const bio = "No Bio";
+        const created = new Date();
+        const win = "0";
+        const lose = "0";
         await registerUserToMongo(
             user.displayName,
             user.email,
             user.uid,
-            user.photoURL
+            user.photoURL,
+            bio,
+            created,
+            win,
+            lose
         );
     } catch (error) {
         console.error("error message in signInWithGoogle", error.message);
@@ -90,11 +101,20 @@ const registerWithEmailAndPassword = async (name, email, password) => {
         const response = await createUserWithEmailAndPassword(auth, email, password);
         const user = response.user;
         const profilePic = "None"
+        const bio = "No Bio";
+        const created = new Date();
+        const win = "0";
+        const lose = "0";
         await registerUserToMongo(
             user.displayName = name,
             user.email,
             user.uid,
-            profilePic
+            profilePic,
+            bio,
+            created,
+            win,
+            lose
+
         );
     } catch (error) {
         console.error("error message in registerWithEmailAndPassword", error.message);
@@ -116,9 +136,11 @@ const sendPasswordReset = async (email) => {
 };
 
 
-const logOut = () => {
-    signOut(auth);
+
+const logOut = (auth) => {
+    return signOut(auth);
 };
+
 
 
 
