@@ -7,14 +7,7 @@ const app = express();
 
 // Middleware
 app.use(express.json());
-app.use(
-  cors({
-    origin: "https://the-pit-sepia.vercel.app", // Replace with your frontend URL
-    credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"], // Specify allowed methods if necessary
-    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers if necessary
-  })
-);
+app.use(cors());
 
 // Connect to MongoDB Atlas
 mongoose
@@ -30,81 +23,13 @@ app.get("/", (req, res) => {
 });
 
 // Use Routes
-app.use(
-  "/api/register",
-  cors({
-    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Content-Type"],
-    credentials: true,
-    accessControlAllowOrigin: true,
-    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
-    accessControlAllowHeaders: ["Content-Type", "Authorization"],
-  }),
-  require("./register")
-);
-app.use(
-  "/api/matchups",
-  cors({
-    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
 
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Content-Type"],
-    credentials: true,
-    accessControlAllowOrigin: true,
-    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
-    accessControlAllowHeaders: ["Content-Type", "Authorization"],
-  }),
-  require("./matchups")
-);
-app.use(
-  "/api/messages",
-  cors({
-    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
+app.use('/api/users', require('./users'));
+app.use('/api/anime', require('./animes'));
+app.use('/api/matchups', require('./matchups'));
+app.use('/api/register', require('./register'));
 
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Content-Type"],
-    credentials: true,
-    accessControlAllowOrigin: true,
-    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
-    accessControlAllowHeaders: ["Content-Type", "Authorization"],
-  }),
-  require("./messages")
-);
-
-app.use(
-  "/api/users",
-  cors({
-    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
-
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Content-Type"],
-    credentials: true,
-    accessControlAllowOrigin: true,
-    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
-    accessControlAllowHeaders: ["Content-Type", "Authorization"],
-  }),
-  require("./users")
-);
-
-app.use(
-  "/api/animes",
-  cors({
-    origin: ["https://the-pit-sepia.vercel.app", "http://localhost:3000"],
-
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    exposedHeaders: ["Content-Type"],
-    credentials: true,
-    accessControlAllowOrigin: true,
-    accessControlAllowMethods: ["GET", "POST", "PUT", "DELETE"],
-    accessControlAllowHeaders: ["Content-Type", "Authorization"],
-  }),
-  require("./animes")
-);
+const PORT = process.env.PORT || 3100;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
 // Export the app for Vercel
 module.exports = app;

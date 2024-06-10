@@ -42,7 +42,7 @@ const registerUserToMongo = async (name, email, uid, displayPicture, bio, create
     try {
         // console.log(name, email, uid, displayPicture);
         // console.log("about to enter wait");
-        await axios.post('https://the-pit-backend.vercel.app/api/register', {
+        await axios.post('http://localhost:3100/api/register', {
             name,
             email,
             uid,

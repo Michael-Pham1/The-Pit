@@ -6,6 +6,7 @@ router.post('/', async (req, res) => {
     console.log("Made it to the post");
     try {
         const { name, email, uid, displayPicture, bio, created, win, lose } = req.body;
+        console.log(name, email, uid, displayPicture, bio, created, win, lose);
 
         const userFound = await User.findOne({ uid });
         if (userFound) {
@@ -35,20 +36,20 @@ router.post('/', async (req, res) => {
 });
 
 
-router.get('/:uid', async (req, res) => {
-    try {
-        const { uid } = req.params;
-        const user = await User.findOne({ uid });
+// router.get('/:uid', async (req, res) => {
+//     try {
+//         const { uid } = req.params;
+//         const user = await User.findOne({ uid });
 
-        if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-        }
+//         if (!user) {
+//             return res.status(404).json({ error: 'User not found' });
+//         }
 
-        res.json(user);
-    } catch (error) {
-        console.error("Error occurred:", error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
+//         res.json(user);
+//     } catch (error) {
+//         console.error("Error occurred:", error.message);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
 
 module.exports = router;
