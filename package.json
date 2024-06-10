@@ -47,6 +47,6 @@
     "chai": "^5.1.1",
     "chai-http": "^5.0.0",
     "mocha": "^10.4.0",
-    "eslint-plugin-jest": "^28.6.0",
+    "eslint-plugin-jest": "^28.6.0"
   }
 }

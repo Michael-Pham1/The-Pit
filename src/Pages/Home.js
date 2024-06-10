@@ -6,36 +6,40 @@ import DedicatedMatches from '../Components/DedicatedMatches';
 
 function Home() {
   const [matchups, setMatchups] = useState([]);
-  const [anime1, setAnime1] = useState('');
-  const [anime2, setAnime2] = useState('');
-  const [anime1Image, setAnime1Image] = useState(null); // Updated to handle file
-  const [anime2Image, setAnime2Image] = useState(null); // Updated to handle file
-  const [result, setResult] = useState(null);
+  const [character1, setCharacter1] = useState('');
+  const [character2, setCharacter2] = useState('');
+  const [imageCharacter1, setImageCharacter1] = useState(null); // Store File object directly
+  const [imageCharacter2, setImageCharacter2] = useState(null); // Store File object directly
+  const [vote1, setVote1] = useState(0);
+  const [vote2, setVote2] = useState(0);
+  const [result, setResult] = useState(false); // Assuming a boolean for the result
+  const [creatorId] = useState('creatorId123'); // Assuming a constant creatorId
   const [currentPage, setCurrentPage] = useState(1);
   const [matchesPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
   const [isFormVisible, setIsFormVisible] = useState(false);
 
   useEffect(() => {
-    const fetchMatchups = async () => {
-      try {
-        const response = await axios.get('https://the-pit-backend.vercel.app/api/matchups');
-        setMatchups(response.data);
-      } catch (err) {
-        console.error(err);
-      }
-    };
-    fetchMatchups();
+    axios.get('https://the-pit-backend.vercel.app/api/matchups')
+      .then(response => setMatchups(response.data))
+      .catch(err => console.error(err));
   }, []);
+
+  const handleImageChange = (e, setImage) => {
+    setImage(e.target.files[0]);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('anime1', anime1);
-    formData.append('anime2', anime2);
+    formData.append('character1', character1);
+    formData.append('character2', character2);
     formData.append('result', result);
-    if (anime1Image) formData.append('anime1Image', anime1Image);
-    if (anime2Image) formData.append('anime2Image', anime2Image);
+    formData.append('vote1', vote1);
+    formData.append('vote2', vote2);
+    formData.append('createrId', creatorId);
+    if (imageCharacter1) formData.append('imageCharacter1', imageCharacter1);
+    if (imageCharacter2) formData.append('imageCharacter2', imageCharacter2);
 
     try {
       const response = await axios.post('https://the-pit-backend.vercel.app/api/matchups', formData, {
@@ -44,23 +48,29 @@ function Home() {
         },
       });
       setMatchups([...matchups, response.data]);
-      setAnime1('');
-      setAnime2('');
-      setAnime1Image(null);
-      setAnime2Image(null);
-      setResult(null);
-      setIsFormVisible(false);
+      resetForm();
     } catch (err) {
       console.error(err);
     }
   };
 
+  const resetForm = () => {
+    setCharacter1('');
+    setCharacter2('');
+    setImageCharacter1(null);
+    setImageCharacter2(null);
+    setVote1(0);
+    setVote2(0);
+    setResult(false);
+    setIsFormVisible(false);
+  };
+
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible);
 
   const filteredMatches = matchups.filter(matchup =>
-  matchup.anime1?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-  matchup.anime2?.toLowerCase().includes(searchTerm.toLowerCase())
-);
+    matchup.character1.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    matchup.character2.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   const indexOfLastMatch = currentPage * matchesPerPage;
   const indexOfFirstMatch = indexOfLastMatch - matchesPerPage;
@@ -90,46 +100,46 @@ function Home() {
         <DedicatedMatches currentMatches={currentMatches} nextPage={nextPage} prevPage={prevPage} />
         {isFormVisible && (
           <div className='form-container'>
-              <form onSubmit={handleSubmit}>
-                  <div className='close-button-container'>
-                    <button className="close-form-button" onClick={() => setIsFormVisible(false)}>X</button>
-                  </div>
-                  <div className='input-container-wrapper'>
-                    <div className='input-container' id='character-entry-1'>
-                      <input className='character-name-input'
-                        type="text"
-                        value={anime1}
-                        onChange={(e) => setAnime1(e.target.value)}
-                        placeholder="Character 1"
-                        required
-                      />
-                      <input className='character-image-input'
-                        type="file"
-                        onChange={(e) => setAnime1Image(e.target.files[0])}
-                        accept="image/*"
-                      />
-                    </div>
-                    <div className='input-container' id='character-entry-2'>
-                      <input className='character-name-input'
-                        type="text"
-                        value={anime2}
-                        onChange={(e) => setAnime2(e.target.value)}
-                        placeholder="Character 2"
-                        required
-                      />
-                      <input className='character-image-input'
-                        type="file"
-                        onChange={(e) => setAnime2Image(e.target.files[0])}
-                        accept="image/*"
-                      />
-                    </div>
-                  </div>
-                  <div className='submit-button-container'>
-                    <button type="submit">Add Matchup</button>
-                  </div>
-              </form>
+            <form onSubmit={handleSubmit}>
+              <div className='close-button-container'>
+                <button className="close-form-button" onClick={() => setIsFormVisible(false)}>X</button>
+              </div>
+              <div className='input-container-wrapper'>
+                <div className='input-container' id='character-entry-1'>
+                  <input className='character-name-input'
+                    type="text"
+                    value={character1}
+                    onChange={(e) => setCharacter1(e.target.value)}
+                    placeholder="Character 1"
+                    required
+                  />
+                  <input className='character-image-input'
+                    type="file"
+                    onChange={(e) => handleImageChange(e, setImageCharacter1)}
+                    accept="image/*"
+                  />
+                </div>
+                <div className='input-container' id='character-entry-2'>
+                  <input className='character-name-input'
+                    type="text"
+                    value={character2}
+                    onChange={(e) => setCharacter2(e.target.value)}
+                    placeholder="Character 2"
+                    required
+                  />
+                  <input className='character-image-input'
+                    type="file"
+                    onChange={(e) => handleImageChange(e, setImageCharacter2)}
+                    accept="image/*"
+                  />
+                </div>
+              </div>
+              <div className='submit-button-container'>
+                <button type="submit">Add Matchup</button>
+              </div>
+            </form>
           </div>
-      )}
+        )}
       </div>
     </div>
   );
