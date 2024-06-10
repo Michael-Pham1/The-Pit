@@ -58,9 +58,9 @@ function Home() {
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible);
 
   const filteredMatches = matchups.filter(matchup =>
-    matchup.anime1.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    matchup.anime2.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  matchup.anime1?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+  matchup.anime2?.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   const indexOfLastMatch = currentPage * matchesPerPage;
   const indexOfFirstMatch = indexOfLastMatch - matchesPerPage;
