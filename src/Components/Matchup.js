@@ -1,5 +1,3 @@
-
-
 import React from 'react';
 import "./Matchup.css";
 import vs from '../Images/vs-image.jpg';

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 import exampleImage from '../Images/Header.jpeg';
 import '../Home.css';
@@ -8,12 +9,12 @@ function Home() {
   const [matchups, setMatchups] = useState([]);
   const [character1, setCharacter1] = useState('');
   const [character2, setCharacter2] = useState('');
-  const [imageCharacter1, setImageCharacter1] = useState(null); // Store File object directly
-  const [imageCharacter2, setImageCharacter2] = useState(null); // Store File object directly
+  const [imageCharacter1, setImageCharacter1] = useState(null);
+  const [imageCharacter2, setImageCharacter2] = useState(null);
   const [vote1, setVote1] = useState(0);
   const [vote2, setVote2] = useState(0);
-  const [result, setResult] = useState(false); // Assuming a boolean for the result
-  const [creatorId, setcreatorId] = useState('creatorId123'); // Assuming a constant creatorId
+  const [result, setResult] = useState(false);
+  const [creatorId, setcreatorId] = useState('creatorId123');
   const [currentPage, setCurrentPage] = useState(1);
   const [matchesPerPage] = useState(5);
   const [searchTerm, setSearchTerm] = useState('');
@@ -50,24 +51,14 @@ function Home() {
     formData.forEach((value, key) => console.log(key, value));
 
     try {
-      const response = await axios.post('http://localhost:3100/api/matchups', formData, 
-        {
-          // character1,
-          // character2,
-          // imageCharacter1,
-          // imageCharacter2,
-          // result,
-          // vote1,
-          // vote2,
-          // creatorId
-           headers: {
+      const response = await axios.post('http://localhost:3100/api/matchups', formData, {
+        headers: {
           'accept': 'application/json',
           'Accept-Language': 'en-US,en;q=0.8',
           'Content-Type': `multipart/form-data; `,
-          }
-        });
+        }
+      });
       setMatchups([...matchups, response.data]);
-      // resetForm();
     } catch (err) {
       console.error(err);
     }
@@ -83,7 +74,6 @@ function Home() {
     setResult(false);
     setcreatorId('creatorId123');
     setIsFormVisible(false);
-
   };
 
   const toggleFormVisibility = () => setIsFormVisible(!isFormVisible);
@@ -161,6 +151,15 @@ function Home() {
             </form>
           </div>
         )}
+        <div id="matchup-list">
+          {currentMatches.map((matchup) => (
+            <div key={matchup._id} className="matchup-item">
+              <Link to={`/matchup/${matchup._id}`}>
+                {matchup.character1} vs {matchup.character2}
+              </Link>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

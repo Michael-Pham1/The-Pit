@@ -7,30 +7,24 @@ import Profile from "./Pages/Profile";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Reset from "./Components/Reset";
-
+import Matchup from "./Components/Matchup";
 
 function App() {
   return (
-    //NAV BAR   
     <Router>
       <div>
         <NavBar />
         <Routes>
-          <Route path="/" Component={Login} />
-          <Route path="/register" Component={Register} />
-          <Route path="/reset" Component={Reset} />
-          <Route path="/Home" element={<Home />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset" element={<Reset />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/catalog" element={<Catalog />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/matchup/:id" element={<Matchup />} />
         </Routes>
       </div>
     </Router>
-
-    //Landing Page image
-
-    //Buttons
-
-    //Display the matchups
   );
 }
 
