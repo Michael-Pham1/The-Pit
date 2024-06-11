@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
 import NavBar from "./Components/NavBar";
 import Home from "./Pages/Home";
 import Catalog from "./Pages/Catalog";
@@ -8,29 +8,27 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Reset from "./Components/Reset";
 
-
 function App() {
   return (
-    //NAV BAR   
     <Router>
       <div>
         <NavBar />
         <Routes>
-          <Route path="/" Component={Login} />
-          <Route path="/register" Component={Register} />
-          <Route path="/reset" Component={Reset} />
-          <Route path="/Home" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/reset" element={<Reset />} />
+          {sessionStorage.getItem("uid") !== null ? (
+            <>
+              <Route path="/home" element={<Home />} />
+              <Route path="/catalog" element={<Catalog />} />
+              <Route path="/profile" element={<Profile />} />
+            </>
+          ) : (
+            <Navigate to="/" replace />
+          )}
         </Routes>
       </div>
     </Router>
-
-    //Landing Page image
-
-    //Buttons
-
-    //Display the matchups
   );
 }
 

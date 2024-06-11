@@ -2,6 +2,8 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
 import axios from 'axios';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import {
     GoogleAuthProvider,
     signInWithPopup,
@@ -10,7 +12,6 @@ import {
     sendPasswordResetEmail,
     signOut,
 } from 'firebase/auth';
-
 import {
     getFirestore,
     query,
@@ -18,7 +19,6 @@ import {
     collection,
     where
 } from 'firebase/firestore';
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyDy0sxwgTZ32dxnJUNEtRwDT9Yr8i5oDvM",
@@ -30,20 +30,15 @@ const firebaseConfig = {
     measurementId: "G-PGZKGHFNKT"
 };
 
-
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const googleProvider = new GoogleAuthProvider();
 
-
-const registerUserToMongo = async (name, email, uid, displayPicture, bio, created, win, lose) => {
-
+const registerUserToMongo = async (username, email, uid, displayPicture, bio, created, win, lose) => {
     try {
-        // console.log(name, email, uid, displayPicture);
-        // console.log("about to enter wait");
         await axios.post('http://localhost:3100/api/register', {
-            name,
+            username,
             email,
             uid,
             displayPicture,
@@ -53,6 +48,9 @@ const registerUserToMongo = async (name, email, uid, displayPicture, bio, create
             lose
         });
         console.log("Registered user successfully");
+        sessionStorage.setItem('uid', uid);
+        const uid2 = sessionStorage.getItem('uid')
+        console.log("Registered users uid: ", uid2);
     } catch (err) {
         console.error("This is the error is the rutg", err);
     }
@@ -69,8 +67,9 @@ const signInWithGoogle = async () => {
         const created = new Date();
         const win = "0";
         const lose = "0";
+        const nameTemp = "GoogleUser";
         await registerUserToMongo(
-            user.displayName,
+            nameTemp,
             user.email,
             user.uid,
             user.photoURL,
@@ -87,20 +86,20 @@ const signInWithGoogle = async () => {
 
 const loginWithEmailAndPassword = async (email, password) => {
     try {
-        await signInWithEmailAndPassword(auth, email, password);
+        const response = await signInWithEmailAndPassword(auth, email, password);
+        const user = response.user;
+        sessionStorage.setItem('uid', user.uid);
     } catch (error) {
         console.error(error.message);
         alert(error.message);
-
-    };
-
+    }
 };
 
 const registerWithEmailAndPassword = async (name, email, password) => {
     try {
         const response = await createUserWithEmailAndPassword(auth, email, password);
         const user = response.user;
-        const profilePic = "None"
+        const profilePic = "None";
         const bio = "No Bio";
         const created = new Date();
         const win = "0";
@@ -114,37 +113,27 @@ const registerWithEmailAndPassword = async (name, email, password) => {
             created,
             win,
             lose
-
         );
+
     } catch (error) {
         console.error("error message in registerWithEmailAndPassword", error.message);
         alert(error.message);
     }
-}
+};
 
 const sendPasswordReset = async (email) => {
     try {
         await sendPasswordResetEmail(auth, email);
         alert("Password reset Email sent");
-
     } catch (error) {
         console.error(error.message);
         alert(error.message);
-
-    };
-
+    }
 };
 
-
-
 const logOut = (auth) => {
+    sessionStorage.setItem("uid", null);
     return signOut(auth);
 };
 
-
-
-
-
-
 export { auth, db, sendPasswordReset, registerWithEmailAndPassword, signInWithGoogle, loginWithEmailAndPassword, logOut };
-

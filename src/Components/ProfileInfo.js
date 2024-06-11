@@ -1,43 +1,60 @@
-import React from "react";
 import "./ProfileInfo.css";
 import profilePic from "../Images/anime-woman.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-function ProfileInfo(profile) {
-  //Frpm the profile object, we can extract all the profile info we need
+function ProfileInfo() {
+  const [profile, setProfile] = useState(null);
+
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const uid = sessionStorage.getItem('uid');
+        const response = await axios.get(`http://localhost:3100/api/register/${uid}`); // Assuming your API endpoint is /api/users/:uid
+        setProfile(response.data);
+        console.log("Registered users data: ", response.data);
+      } catch (error) {
+        console.error("Error occurred while fetching profile:", error.message);
+      }
+    };
+
+    fetchProfile();
+  }, []);
+
+  if (!profile) {
+    return <div>Loading...</div>;
+  }
+
   return (
-    <div id="profile-info">
+    <div id={profile.username}>
       <div id="user-details">
         <div id="user-info">
-          <img src={profilePic} alt="profile pic"></img>
+          <img src={profile.displayPicture} alt="profile pic"></img>
           <section>
             <p>
-              <strong>Anime Lover</strong>
+              <strong>{profile.name}</strong>
             </p>
-            <p style={{ color: "#9e9d9d" }}>@ILoveAnime</p>
+            <p style={{ color: "#9e9d9d" }}>@{profile.username}</p>
           </section>
         </div>
         <div id="stats">
           <p>
-            <strong>Wins:</strong> 9001
+            <strong>Badges:</strong> {profile.badges}
           </p>
           <p>
-            <strong>Losses:</strong> 378
+            <strong>Wins: </strong> {profile.win}
+          </p>
+          <p>
+            <strong>Losses:</strong> {profile.lose}
           </p>
         </div>
       </div>
       <div id="bio">
         <p>
-          <strong>Bio</strong>
+          <strong>{profile.bio}</strong>
         </p>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec lobortis sagittis ante vel pretium.
-          Pellentesque leo odio, dignissim eu magna quis, facilisis ultricies lorem. Fusce tellus metus, aliquet eget
-          odio ac, posuere cursus diam. Pellentesque non risus ipsum. Vestibulum viverra malesuada purus nec molestie.
-          Nam finibus rutrum eros nec dictum. Sed id sodales ex, vel volutpat arcu.
-        </p>
+        <p>{profile.bio}</p>
       </div>
-      
-     
     </div>
   );
 }

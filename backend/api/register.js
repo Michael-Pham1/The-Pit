@@ -5,15 +5,15 @@ const User = require('../models/User');
 router.post('/', async (req, res) => {
     console.log("Made it to the post");
     try {
-        const { name, email, uid, displayPicture, bio, created, win, lose } = req.body;
-        console.log(name, email, uid, displayPicture, bio, created, win, lose);
+        const { username, email, uid, displayPicture, bio, created, win, lose } = req.body;
+        console.log(username, email, uid, displayPicture, bio, created, win, lose);
 
         const userFound = await User.findOne({ uid });
         if (userFound) {
             return res.status(422).json({ error: 'User already exists!' });
         } else {
             const newUser = new User({
-                name,
+                username,
                 email,
                 uid,
                 displayPicture,
@@ -38,7 +38,7 @@ router.post('/', async (req, res) => {
 
 router.get('/:uid', async (req, res) => {
     try {
-        const  uid  = req.params.uid;
+        const uid = req.params.uid;
         const user = await User.findOne({ uid: uid });
 
         if (!user) {
