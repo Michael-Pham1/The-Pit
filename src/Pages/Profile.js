@@ -5,7 +5,7 @@ function Profile() {
   return (
     <div style={{padding: '4rem'}}>
       <ProfileInfo />
-      <Matchup />
+      {/* <Matchup /> */}
     </div>
   );
   
