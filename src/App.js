@@ -11,7 +11,7 @@ import Reset from "./Components/Reset";
 
 function App() {
   return (
-    //NAV BAR
+    //NAV BAR   
     <Router>
       <div>
         <NavBar />

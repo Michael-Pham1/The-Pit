@@ -19,7 +19,7 @@ router.post("/", async (req, res) => {
       return res.status(404).json({ message: "Matchup not found" });
     }
 
-    const newMessage = new Message({ text: text, matchupId: matchupId, createrId: user, createdAt: new Date()});
+    const newMessage = new Message({ text: text, matchupId: matchupId, creatorId: user, createdAt: new Date()});
     await newMessage.save();
     res.status(201).json(newMessage);
   } catch (error) {

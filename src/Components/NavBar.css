@@ -1,11 +1,9 @@
 .navbar {
-  background-color: transparent;
+  background-color: black;
   overflow: hidden;
   display: flex;
   z-index: 15;
-  /* Add this line */
   justify-content: space-between;
-  /* Optional, ensures spacing */
   position: relative;
 }
 
@@ -15,6 +13,9 @@
   padding: 0;
   display: flex;
   margin-left: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .nav-links li a {
@@ -23,6 +24,7 @@
   text-align: center;
   padding: 14% 16px;
   text-decoration: none;
+  height: 100%;
 }
 
 .nav-links li a:hover {

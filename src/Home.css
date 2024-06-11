@@ -1,3 +1,11 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+
 .homepage {
     position: absolute;
     top: 0;
@@ -5,6 +13,7 @@
     width: 100%;
     /* You can add other styling as needed */
 }
+
 
 #home-body {
     margin: 0;
@@ -17,12 +26,25 @@
 
 header {
     width: 100%;
-    height: 20vw;
-    max-height: 30vh;
+    height: 30vw;
+    max-height: 50vh;
     overflow: hidden;
     top: 0px;
     z-index: 0;
     position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-title {
+    position: absolute;
+    top: 30%;
+    font-size: 4vw; 
+    z-index: 1;
+    color: white;
+    text-align: center;
+    width: 100%;
 }
 
 .header-image {
@@ -32,6 +54,21 @@ header {
     /* position: fixed;
     top: 0px;
     z-index: 0; */
+}
+
+
+#create-match-button {
+    font-size: 200%;
+    width: 20%;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+#create-match-button:hover {
+    background-color: black;
+    color: white;
 }
 
 #search-create-container {
@@ -57,8 +94,7 @@ header {
 
 
 .bold-line {
-    border: none;
-    height: 5%;
+    padding: 5px;
     /* Adjust the thickness here */
     background-color: black;
     /* Adjust the color here */
@@ -73,8 +109,55 @@ header {
 }
 
 #dedicated-matches-container {
-    height: 10%;
-}
+    display: flex;
+    flex-direction: column;
+    gap: 3px;  
+  }
+  
+  
+  #dedicated-matches-list {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .prev-button {
+    display: inline-block;
+    margin-right: 8px;
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    padding: 10px;
+    margin-left: 20px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(135deg);
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .next-button {
+    display: inline-block;
+    margin-right: 8px;
+    border: solid black;
+    border-width: 0 5px 5px 0;
+    padding: 10px;
+    margin-right: 20px;
+    transform: rotate(135deg);
+    -webkit-transform: rotate(-45deg);
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+  }
+
+  .prev-button:hover {
+    cursor: pointer;
+    background-color: black;
+  }
+
+  .next-button:hover {
+    cursor: pointer;
+    background-color: black;
+  }
 
 .overlay {
     position: absolute;
@@ -84,3 +167,88 @@ header {
     height: 100%;
     background-color: rgba(146, 139, 139, 0.5);
 }
+
+.form-container form {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 40%;
+    height: 15%;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+}
+
+.close-button-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    height: 20%;
+}
+
+.close-form-button {
+    font-size: 200%;
+    width: 7.5%;
+    cursor: pointer;
+    margin-right: 5px;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;    
+}
+
+.close-form-button:hover {
+    background-color: black;
+    color: white;
+}
+
+.input-container-wrapper {
+    width: 100%;
+    height: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input-container {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
+}
+
+
+
+.submit-button-container {
+    width: 100%;
+    height: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button-container button {
+    font-size: 200%;
+    width: 50%;
+    cursor: pointer;
+    border-radius: 20px;
+    transition: background-color 0.3s ease;
+    transition: color 0.3s ease;
+}
+
+.character-image-input {
+    padding-left: 110px;
+}
+
+.submit-button-container button:hover {
+    background-color: black;
+    color: white;
+}
+
+
+
