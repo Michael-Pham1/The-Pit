@@ -26,34 +26,36 @@ function ProfileInfo() {
   }
 
   return (
-    <div id={profile.username}>
-      <div id="user-details">
-        <div id="user-info">
-          <img src={profile.displayPicture} alt="profile pic"></img>
-          <section>
+    <div className="ProfilePage">
+      <div id="profileBox">
+        <div id="user-details">
+          <div id="user-info">
+            <img src={profile.displayPicture} alt="profile pic"></img>
+            <section>
+              <p>
+                <strong>{profile.name}</strong>
+              </p>
+              <p style={{ color: "#9e9d9d" }}>@{profile.username}</p>
+            </section>
+          </div>
+          <div id="stats">
             <p>
-              <strong>{profile.name}</strong>
+              <strong>Badges:</strong> {profile.badges}
             </p>
-            <p style={{ color: "#9e9d9d" }}>@{profile.username}</p>
-          </section>
+            <p>
+              <strong>Wins: </strong> {profile.win}
+            </p>
+            <p>
+              <strong>Losses:</strong> {profile.lose}
+            </p>
+          </div>
         </div>
-        <div id="stats">
+        <div id="bio">
           <p>
-            <strong>Badges:</strong> {profile.badges}
+            <strong>Bio</strong>
           </p>
-          <p>
-            <strong>Wins: </strong> {profile.win}
-          </p>
-          <p>
-            <strong>Losses:</strong> {profile.lose}
-          </p>
+          <p>{profile.bio}</p>
         </div>
-      </div>
-      <div id="bio">
-        <p>
-          <strong>{profile.bio}</strong>
-        </p>
-        <p>{profile.bio}</p>
       </div>
     </div>
   );

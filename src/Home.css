@@ -11,6 +11,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    background-color: rgba(121, 121, 121, 0.447);
     /* You can add other styling as needed */
 }
 
@@ -18,7 +19,6 @@
 #home-body {
     margin: 0;
     padding-top: 1.8%;
-    background-color: #f3f0f058;
     height: 200vh;
 
 }
@@ -40,7 +40,7 @@ header {
 .header-title {
     position: absolute;
     top: 30%;
-    font-size: 4vw; 
+    font-size: 4vw;
     z-index: 1;
     color: white;
     text-align: center;
@@ -64,11 +64,13 @@ header {
     cursor: pointer;
     transition: background-color 0.3s ease;
     transition: color 0.3s ease;
+    background-color: black;
+    color: white;
 }
 
 #create-match-button:hover {
-    background-color: black;
-    color: white;
+    background-color: rgb(226, 221, 221);
+    color: rgb(0, 0, 0);
 }
 
 #search-create-container {
@@ -111,19 +113,19 @@ header {
 #dedicated-matches-container {
     display: flex;
     flex-direction: column;
-    gap: 3px;  
-  }
-  
-  
-  #dedicated-matches-list {
+    gap: 3px;
+}
+
+
+#dedicated-matches-list {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     gap: 30px;
-  }
+}
 
-  .prev-button {
+.prev-button {
     display: inline-block;
     margin-right: 8px;
     border: solid black;
@@ -134,9 +136,9 @@ header {
     -webkit-transform: rotate(135deg);
     background-color: transparent;
     transition: background-color 0.3s ease;
-  }
+}
 
-  .next-button {
+.next-button {
     display: inline-block;
     margin-right: 8px;
     border: solid black;
@@ -147,17 +149,17 @@ header {
     -webkit-transform: rotate(-45deg);
     background-color: transparent;
     transition: background-color 0.3s ease;
-  }
+}
 
-  .prev-button:hover {
+.prev-button:hover {
     cursor: pointer;
     background-color: black;
-  }
+}
 
-  .next-button:hover {
+.next-button:hover {
     cursor: pointer;
     background-color: black;
-  }
+}
 
 .overlay {
     position: absolute;
@@ -173,7 +175,11 @@ header {
     top: 25%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: white;
+    background-image: url('./Images/form.jpeg');
+    background-repeat: no-repeat;
+    background-size: 150%;
+    background-position: center;
+    margin-top: -10vh;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 40%;
@@ -197,7 +203,7 @@ header {
     margin-right: 5px;
     margin-top: 5px;
     transition: background-color 0.3s ease;
-    transition: color 0.3s ease;    
+    transition: color 0.3s ease;
 }
 
 .close-form-button:hover {
@@ -249,6 +255,3 @@ header {
     background-color: black;
     color: white;
 }
-
-
-

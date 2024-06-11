@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { auth, logOut } from "./firebase";
+import "./Login.css";
 
 const LogOutNav = () => {
     const navigate = useNavigate();
@@ -15,7 +16,7 @@ const LogOutNav = () => {
     };
 
     return (
-        <button onClick={handleLogOut}>Log Out</button>
+        <button id='logOut' onClick={handleLogOut}>Log Out</button>
     );
 };
 
