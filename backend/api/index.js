@@ -28,6 +28,7 @@ app.use('/api/users', require('./users'));
 app.use('/api/anime', require('./animes'));
 app.use('/api/matchups', require('./matchups'));
 app.use('/api/register', require('./register'));
+app.use('/api/messages', require('./messages'));
 
 const PORT = process.env.PORT || 3100;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

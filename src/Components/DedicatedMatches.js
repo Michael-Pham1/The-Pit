@@ -13,11 +13,12 @@ function DedicatedMatches({ currentMatches, nextPage, prevPage }) {
           currentMatches.map(matchup => (
             <Matchup
               key={matchup._id}
-              anime1Image={matchup.anime1Image}
-              anime2Image={matchup.anime2Image}
-              anime1Name={matchup.anime1}
-              anime2Name={matchup.anime2}
+              anime1Image={`http://localhost:3100/api/matchups/image/${matchup._id}/1`} 
+              anime2Image={`http://localhost:3100/api/matchups/image/${matchup._id}/2`} 
+              anime1Name={matchup.character1}
+              anime2Name={matchup.character2}
               result={matchup.result}
+              createDate={matchup.createDate}
             />
           ))
         ) : (
