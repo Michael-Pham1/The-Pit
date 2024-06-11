@@ -67,6 +67,7 @@ router.get('/:id', async (req, res) => {
 router.get('/user/:id', async (req, res) => {
   try {
     const matchups = await Matchup.find({ creatorId: req.params.id });
+    const matchups = await Matchup.find({ creatorId: req.params.id });
     res.json(matchups);
   } catch (err) {
     console.error(err);

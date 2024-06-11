@@ -9,7 +9,7 @@ const Message = require("../models/Message");
 */
 router.post("/", async (req, res) => {
   try {
-    const { user, text, matchupId } = req.body; 
+    const { user, text, matchupId } = req.body;
     if (!user || !text || !matchupId) {
       return res.status(400).json({ message: "Missing required fields" });
     }
