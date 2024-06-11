@@ -18,9 +18,6 @@ function ProfileInfo(profile) {
         </div>
         <div id="stats">
           <p>
-            <strong>Badges:</strong> Goku Lover
-          </p>
-          <p>
             <strong>Wins:</strong> 9001
           </p>
           <p>
