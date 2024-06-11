@@ -35,25 +35,3 @@ function Matchup({ anime1Image, anime2Image, anime1Name, anime2Name, createDate,
 
 export default Matchup;
 
-
-// import React from 'react';
-
-// function Matchup({ anime1Image, anime2Image, anime1Name, anime2Name, result, createDate }) {
-//   return (
-//     <div className="matchup">
-//       <div className="character-1">
-//         <img src={anime1Image} alt={`Image of ${anime1Name}`} />
-//         <h3>{anime1Name}</h3>
-//       </div>
-//       <div className="vs">vs</div>
-//       <div className="character-2">
-//         <img src={anime2Image} alt={`Image of ${anime2Name}`} />
-//         <h3>{anime2Name}</h3>
-//       </div>
-//       <p>Result: {result ? 'Won' : 'Lost'}</p>
-//       <p>Create Date: {new Date(createDate).toLocaleDateString()}</p>
-//     </div>
-//   );
-// }
-
-// export default Matchup;
