@@ -4,20 +4,30 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Available Scripts
 
-In the project directory, you can run:
+Our Main branch is currently unavailable becuase we ran out of time to merge and we were having Cors issues when deploying on vercel.
+the branch to run the project is "matchUPS". From there, you will need two terminals one to run back end and one to run from end.
+
+Ther backend terminal can be achieved by just typing 
+
+### `cd backend`
+
+you should run these two commands on both frontend and backend terminals:
 
 ### `npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### `After Web Runs Users will be able to Sign in and out of our site, edit their profile page (future updates include changing profile picture). They will be able to create matchups between their favorite anime characters and uses can rate which anime character they think would win in the match up. The users can aswell ake a case on why they feel one of the anime characters would win by commenting in the comment section of each matchup. (Future updates would include a point and badge system to award users who voted on the right character to win`
 
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+
 
 ### `npm run build`
 
