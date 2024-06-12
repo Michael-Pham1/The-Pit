@@ -1,5 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Matchup from './Matchup';
+import './DedicatedMatches.css'; // Ensure you have a CSS file for styling
 
 function DedicatedMatches({ currentMatches, nextPage, prevPage }) {
   return (
@@ -11,15 +13,16 @@ function DedicatedMatches({ currentMatches, nextPage, prevPage }) {
         <button className='prev-button' onClick={prevPage}></button>
         {currentMatches.length > 0 ? (
           currentMatches.map(matchup => (
-            <Matchup
-              key={matchup._id}
-              anime1Image={`http://localhost:3100/api/matchups/image/${matchup._id}/1`} 
-              anime2Image={`http://localhost:3100/api/matchups/image/${matchup._id}/2`} 
-              anime1Name={matchup.character1}
-              anime2Name={matchup.character2}
-              result={matchup.result}
-              createDate={matchup.createDate}
-            />
+            <Link key={matchup._id} to={`/matchup/${matchup._id}`} className="matchup-link">
+              <Matchup
+                anime1Image={`http://localhost:3100/api/matchups/image/${matchup._id}/1`} 
+                anime2Image={`http://localhost:3100/api/matchups/image/${matchup._id}/2`} 
+                anime1Name={matchup.character1}
+                anime2Name={matchup.character2}
+                result={matchup.result}
+                createDate={matchup.createDate}
+              />
+            </Link>
           ))
         ) : (
           <p>No matchups available</p>

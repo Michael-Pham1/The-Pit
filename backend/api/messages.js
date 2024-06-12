@@ -2,23 +2,15 @@ const express = require("express");
 const router = express.Router();
 const Message = require("../models/Message");
 
-/* 
-  user(String): user id
-  text(String): message content
-  matchupId(String): matchup id
-*/
 router.post("/", async (req, res) => {
+  console.log("POST /api/messages called");
   try {
-    const { user, text, matchupId } = req.body; 
+    const { user, text, matchupId } = req.body;
     if (!user || !text || !matchupId) {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    const matchup = await Message.findById(matchupId);
-    if (!matchup) {
-      return res.status(404).json({ message: "Matchup not found" });
-    }
-
+    // Ensure this part is not causing the error
     const newMessage = new Message({ text: text, matchupId: matchupId, creatorId: user, createdAt: new Date()});
     await newMessage.save();
     res.status(201).json(newMessage);
@@ -45,6 +37,5 @@ router.get("/", async (req, res) => {
     res.status(500).json({ message: "Messages GET  error", error: error.message });
   }
 });
-
 
 module.exports = router;

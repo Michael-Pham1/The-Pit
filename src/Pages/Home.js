@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import exampleImage from '../Images/Header.jpeg';
 import '../Home.css';
@@ -95,7 +94,7 @@ function Home() {
       <header className="header">
         <img src={exampleImage} alt="Header" className="header-image" />
         <div className="overlay"></div>
-        <div className="header-title">The Pit</div>
+        <div className="header-title">The Pittt</div>
       </header>
       <div id='home-body'>
         <div id='search-create-container'>
@@ -151,15 +150,6 @@ function Home() {
             </form>
           </div>
         )}
-        <div id="matchup-list">
-          {currentMatches.map((matchup) => (
-            <div key={matchup._id} className="matchup-item">
-              <Link to={`/matchup/${matchup._id}`}>
-                {matchup.character1} vs {matchup.character2}
-              </Link>
-            </div>
-          ))}
-        </div>
       </div>
     </div>
   );

@@ -7,7 +7,7 @@ import Profile from "./Pages/Profile";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Reset from "./Components/Reset";
-import Matchup from "./Components/Matchup";
+import Matchup from "./Components/MatchupPage"; // Ensure correct path
 
 function App() {
   return (

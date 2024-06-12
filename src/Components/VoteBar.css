@@ -1,0 +1,43 @@
+.vote-bar-container {
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+  .vote-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .vote-buttons button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+  }
+  
+  .vote-buttons button:hover {
+    background-color: #0056b3;
+  }
+  
+  .vote-bar {
+    display: flex;
+    height: 20px;
+    background-color: #ddd;
+    border-radius: 4px;
+    overflow: hidden;
+  }
+  
+  .vote-bar-left {
+    background-color: #007bff;
+  }
+  
+  .vote-bar-right {
+    background-color: #ff0000;
+  }
+  

@@ -137,6 +137,31 @@ router.get("/:matchupId", async (req, res) => {
   }
 });
 
+router.post('/vote', async (req, res) => {
+  const { matchupId, character } = req.body;
+  try {
+    const matchup = await Matchup.findById(matchupId);
+    if (!matchup) {
+      return res.status(404).json({ message: 'Matchup not found' });
+    }
+
+    if (character === 1) {
+      matchup.vote1 += 1;
+    } else if (character === 2) {
+      matchup.vote2 += 1;
+    } else {
+      return res.status(400).json({ message: 'Invalid character' });
+    }
+
+    await matchup.save();
+    res.json({ vote1: matchup.vote1, vote2: matchup.vote2 });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
 
 
 module.exports = router;
