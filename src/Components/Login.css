@@ -4,11 +4,26 @@
     align-items: center;
     width: 100vw;
     height: 100vh;
-    background-color: #4CAF50;
+    background-image: url('../Images/bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.login::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(42, 40, 40, 0.5);
+    /* Adjust the color and opacity as needed */
+    z-index: 1;
 }
 
 .login_box {
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     height: 60vh;
     padding: 20px 40px;
     display: flex;
@@ -16,6 +31,7 @@
     justify-content: center;
     align-items: center;
     border-radius: 20px;
+    z-index: 3;
 }
 
 .login input {
@@ -23,10 +39,10 @@
     border: none;
     outline: none;
     padding: 10px 15px;
-    /* border-radius: 20px; */
+    border-radius: 20px; 
     margin: 10px;
-    border-bottom: 2px solid #4CAF50;
-    color: #4CAF50;
+    border-bottom: 2px solid #000000c2;
+    color: #000000c2;
 }
 
 .login button {
@@ -35,7 +51,7 @@
     border-radius: 20px;
     border: 2px solid white;
     margin: 5px;
-    background-color: #4CAF50;
+    background-color: #000000c2;
     color: white;
 }
 
@@ -56,10 +72,17 @@
     flex-direction: column;
 }
 
-/* .login_einput {}
+#logOut {
+    font-size: 1vmax;
+    color: #ffffff;
+    background-color: transparent;
+    border: none;
+    height: 5.1vh;
+    width: 5vw;
+}
 
-.login_pinput {}
+#logOut:hover {
+    background-color: #ddd;
+    color: black;
+}
 
-.login_btn {}
-
-.login_googlebtn {} */

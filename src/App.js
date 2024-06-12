@@ -1,31 +1,55 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Routes, Navigate } from "react-router-dom";
-import NavBar from "./Components/NavBar";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
 import Home from "./Pages/Home";
 import Catalog from "./Pages/Catalog";
 import Profile from "./Pages/Profile";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Reset from "./Components/Reset";
-import Matchup from "./Components/MatchupPage"; // Ensure correct path
+import MatchupPage from "./Components/MatchupPage"; 
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/reset" element={<Reset />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/catalog" element={<Catalog />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/matchup/:id" element={<Matchup />} />
-        </Routes>
-      </div>
-    </Router>
-  );
+const App = () => (
+  <Routes>
+    <Route path="/" element={<Login />} />
+    <Route path="/register" element={<Register />} />
+    <Route path="/reset" element={<Reset />} />
+    <Route
+      path="/home"
+      element={
+        <Layout>
+          <Home />
+        </Layout>
+      }
+    />
+    <Route
+      path="/catalog"
+      element={
+        <Layout>
+          <Catalog />
+        </Layout>
+      }
+    />
+    <Route
+      path="/profile"
+      element={
+        <Layout>
+          <Profile />
+        </Layout>
+      }
+    />
+    <Route
+      path="/matchup/:id"
+      element={ <Layout><MatchupPage /></Layout>
 }
+    />
+  </Routes>
+);
 
-export default App;
+const AppWrapper = () => (
+  <Router>
+    <App />
+  </Router>
+);
+
+export default AppWrapper;

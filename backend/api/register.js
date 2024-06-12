@@ -28,13 +28,10 @@ router.post('/', async (req, res) => {
 
             res.status(201).json({ message: "User registered successfully!" });
         }
-
-
     } catch (error) {
         console.log("error occurred:", error.message);
     }
 });
-
 
 router.get('/:uid', async (req, res) => {
     try {
@@ -44,6 +41,32 @@ router.get('/:uid', async (req, res) => {
         if (!user) {
             return res.status(404).json({ error: 'User not found' });
         }
+
+        res.json(user);
+    } catch (error) {
+        console.error("Error occurred:", error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+
+router.post('/:uid', async (req, res) => {
+    console.log("made it to edit post")
+    try {
+        const uid = req.params.uid;
+        const { username, bio } = req.body;
+
+        const user = await User.findOne({ uid });
+
+        if (!user) {
+            return res.status(404).json({ error: 'User not found' });
+        }
+
+        // Update user information
+        user.username = username;
+        user.bio = bio;
+
+        // Save updated user
+        await user.save();
 
         res.json(user);
     } catch (error) {

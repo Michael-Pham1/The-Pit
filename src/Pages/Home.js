@@ -94,7 +94,7 @@ function Home() {
       <header className="header">
         <img src={exampleImage} alt="Header" className="header-image" />
         <div className="overlay"></div>
-        <div className="header-title">The Pittt</div>
+        <div className="header-title">The Pit</div>
       </header>
       <div id='home-body'>
         <div id='search-create-container'>

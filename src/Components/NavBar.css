@@ -1,10 +1,13 @@
 .navbar {
-  background-color: black;
+  background-color: transparent;
   overflow: hidden;
   display: flex;
   z-index: 15;
   justify-content: space-between;
   position: relative;
+  height: 4vmax;
+  padding-right: 1.5vw;
+
 }
 
 .nav-links {
