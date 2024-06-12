@@ -10,7 +10,6 @@ router.post("/", async (req, res) => {
       return res.status(400).json({ message: "Missing required fields" });
     }
 
-    // Ensure this part is not causing the error
     const newMessage = new Message({ text: text, matchupId: matchupId, creatorId: user, createdAt: new Date()});
     await newMessage.save();
     res.status(201).json(newMessage);

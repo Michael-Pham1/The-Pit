@@ -4,10 +4,10 @@ const Matchup = require('../models/Matchup');
 const multer  = require('multer');
 const fs = require('fs');
 
-const storage = multer.memoryStorage(); // Store files in memory
+const storage = multer.memoryStorage(); 
 const upload = multer({ storage: storage });
 
-// Create a new matchup
+// new matchup
 router.post('/', upload.fields([{ name: 'imageCharacter1', maxCount: 1 }, { name: 'imageCharacter2', maxCount: 1 }]), async (req, res) => {
  
   // console.log('match POST request');
@@ -41,7 +41,7 @@ const imageCharacter2 = req.files['imageCharacter2'] ? req.files['imageCharacter
   }
 });
 
-// Get all matchups
+// get all matchups
 router.get('/', async (req, res) => {
   try {
     const matchups = await Matchup.find();
@@ -52,7 +52,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-//Get matchup by matchup id
+//matchup by id
 router.get('/:id', async (req, res) => {
   try {
     const matchup = await Matchup.findById(req.params.id);
@@ -63,7 +63,7 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-//Get matchup by user id
+//matchup by userid
 router.get('/user/:id', async (req, res) => {
   try {
     const matchups = await Matchup.find({ creatorId: req.params.id });
@@ -89,7 +89,6 @@ router.get('/image/:id', async (req, res) => {
   }
 });
 
-// Example for serving specific character images based on request
 router.get('/image/:id/:character', async (req, res) => {
   try {
       const matchup = await Matchup.findById(req.params.id);

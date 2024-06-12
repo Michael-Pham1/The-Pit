@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import Matchup from './Matchup';
-import './DedicatedMatches.css'; // Ensure you have a CSS file for styling
+import './DedicatedMatches.css'; 
 
 function DedicatedMatches({ currentMatches, nextPage, prevPage }) {
   return (

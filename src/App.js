@@ -16,34 +16,20 @@ const App = () => (
     <Route path="/reset" element={<Reset />} />
     <Route
       path="/home"
-      element={
-        <Layout>
-          <Home />
-        </Layout>
-      }
+      element={<Layout> <Home /></Layout> }
     />
     <Route
       path="/catalog"
-      element={
-        <Layout>
-          <Catalog />
-        </Layout>
-      }
+      element={ <Layout> <Catalog />  </Layout> }
     />
     <Route
       path="/profile"
-      element={
-        <Layout>
-          <Profile />
-        </Layout>
-      }
+      element={<Layout><Profile /> </Layout>}
     />
     <Route
       path="/matchup/:id"
-      element={ <Layout><MatchupPage /></Layout>
-}
-    />
-  </Routes>
+      element={ <Layout><MatchupPage /></Layout>} />
+     </Routes>
 );
 
 const AppWrapper = () => (

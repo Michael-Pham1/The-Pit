@@ -61,11 +61,9 @@ router.post('/:uid', async (req, res) => {
             return res.status(404).json({ error: 'User not found' });
         }
 
-        // Update user information
         user.username = username;
         user.bio = bio;
 
-        // Save updated user
         await user.save();
 
         res.json(user);

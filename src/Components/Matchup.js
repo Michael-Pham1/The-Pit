@@ -1,13 +1,8 @@
-
-
 import React from 'react';
 import "./Matchup.css";
 import vs from '../Images/vs-image.jpg';
 
-// Dynamic props for displaying matchup information, now including createDate
 function Matchup({ anime1Image, anime2Image, anime1Name, anime2Name, createDate, result }) {
-  // Format date if createDate is a Date object, otherwise leave as is
-
   return (
     <>
       <div className='matchup-container'>
