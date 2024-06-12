@@ -1,4 +1,3 @@
-
 .matchup {
   display: flex;
   width: 15rem;
@@ -14,14 +13,14 @@
 .character-1 {
   width: 50%;
   height: 100%;
-  background-color: blue;
+  background-color: rgb(0, 0, 0);
   z-index: 10;
 }
 
 .character-2 {
   width: 50%;
   height: 100%;
-  background-color: green;
+  background-color: rgb(114, 114, 114);
   z-index: 10;
 }
 
@@ -62,6 +61,7 @@
   border-radius: 50%;
   border: 3px solid black;
 }
+
 .vs-text {
   display: flex;
   justify-content: space-evenly;

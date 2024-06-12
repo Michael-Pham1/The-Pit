@@ -1,0 +1,9 @@
+ .Catalog {
+     background-image: url('./Images/dome.png');
+     background-repeat: no-repeat;
+     background-size: 150%;
+     height: 60vmax;
+     width: 100vmax;
+     background-position: center;
+     margin-top: -10vh;
+ }

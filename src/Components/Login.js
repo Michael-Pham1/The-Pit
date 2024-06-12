@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import Image from "../Images/bg.jpg"
+
 import { Link, useNavigate } from "react-router-dom";
 import {
     auth,

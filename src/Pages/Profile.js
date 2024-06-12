@@ -3,12 +3,13 @@ import ProfileInfo from "../Components/ProfileInfo";
 import Matchup from '../Components/Matchup';
 function Profile() {
   return (
-    <div style={{padding: '4rem'}}>
+    <div >
       <ProfileInfo />
       {/* <Matchup /> */}
     </div>
   );
-  
+
 }
 
 export default Profile;
+// style={{padding: '4rem'}}

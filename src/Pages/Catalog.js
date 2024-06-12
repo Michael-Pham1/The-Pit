@@ -1,7 +1,11 @@
 import React from 'react';
+import "../Catalog.css";
 
 function Home() {
-  return <h1>Catalog Page</h1>;
+  return (
+    <div className='Catalog'>
+    </div>
+  )
 }
 
 export default Home;
