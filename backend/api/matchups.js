@@ -67,18 +67,12 @@ router.get('/:id', async (req, res) => {
 router.get('/user/:id', async (req, res) => {
   try {
     const matchups = await Matchup.find({ creatorId: req.params.id });
-    const matchups = await Matchup.find({ creatorId: req.params.id });
     res.json(matchups);
   } catch (err) {
     console.error(err);
     res.status(500).send('Matchups GET user/:id error');
   }
 });
-
-
-
-
-
 
 router.get('/image/:id', async (req, res) => {
   try {
@@ -117,6 +111,57 @@ router.get('/image/:id/:character', async (req, res) => {
       res.status(500).send('Server error');
   }
 });
+
+router.post("/", async (req, res) => {
+  try {
+    const { user, text, matchupId } = req.body;
+    if (!user || !text || !matchupId) {
+      return res.status(400).json({ message: "Missing required fields" });
+    }
+
+    const newMessage = new Message({ text, matchupId, creatorId: user });
+    await newMessage.save();
+    res.status(201).json(newMessage);
+  } catch (error) {
+    res.status(500).json({ message: "Messages POST error", error: error.message });
+  }
+});
+
+router.get("/:matchupId", async (req, res) => {
+  try {
+    const { matchupId } = req.params;
+    const messages = await Message.find({ matchupId });
+    res.json(messages);
+  } catch (error) {
+    res.status(500).json({ message: "Messages GET :matchupId error", error: error.message });
+  }
+});
+
+router.post('/vote', async (req, res) => {
+  const { matchupId, character } = req.body;
+  try {
+    const matchup = await Matchup.findById(matchupId);
+    if (!matchup) {
+      return res.status(404).json({ message: 'Matchup not found' });
+    }
+
+    if (character === 1) {
+      matchup.vote1 += 1;
+    } else if (character === 2) {
+      matchup.vote2 += 1;
+    } else {
+      return res.status(400).json({ message: 'Invalid character' });
+    }
+
+    await matchup.save();
+    res.json({ vote1: matchup.vote1, vote2: matchup.vote2 });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Server error' });
+  }
+});
+
+
 
 
 module.exports = router;

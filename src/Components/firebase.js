@@ -78,6 +78,7 @@ const signInWithGoogle = async () => {
             win,
             lose
         );
+        sessionStorage.setItem("uid", user.uid);
     } catch (error) {
         console.error("error message in signInWithGoogle", error.message);
         alert(error.message);

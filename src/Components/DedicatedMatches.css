@@ -1,0 +1,23 @@
+.matchup-link {
+    text-decoration: none;
+    color: black;
+  }
+  
+  .matchup-link:visited {
+    color: black;
+  }
+  
+  .matchup-link:hover {
+    color: black;
+  }
+  
+  .matchup-link:active {
+    color: black;
+  }
+  
+  .matchup-link .matchup-item h3,
+  .matchup-link .matchup-item p {
+    text-decoration: none;
+    color: black;
+  }
+  
